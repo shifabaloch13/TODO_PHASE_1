@@ -1,55 +1,80 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: 1.0.0 → 1.1.0
+- Modified principles: Added 5 specific principles for Todo app
+- Added sections: Core Principles, Key Standards, Constraints, Success Criteria
+- Removed sections: Template placeholders
+- Templates requiring updates: N/A (new constitution)
+- Follow-up TODOs: None
+-->
+# Evolution of Todo – Phase I (In-Memory Python CLI App) Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Spec-Driven Development
+All features must be designed using specs before code generation. Every implementation must be traceable back to a specification document that defines inputs, outputs, expected behavior, edge cases, and dependencies.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Accuracy
+Ensure that all feature behaviors match the specifications. Code generation must follow the design exactly without deviation, and all functionality must be verified against the original spec requirements.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Clarity
+Code and CLI outputs must be understandable and user-friendly. Both the application interface and the underlying code must be clear to users and maintainers, with proper documentation and intuitive design.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Clean Code
+Follow Python best practices, modular design, and maintainable structure. Code must adhere to clean code principles including proper naming conventions, modularity, and readability.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Reproducibility
+Every spec should be traceable and implementable via Claude Code. All specifications must be detailed enough to be converted into working code through automated processes.
 
-### [PRINCIPLE_6_NAME]
+## Key Standards
 
+### Folder Structure
+- `/src` : All Python source code
+- `/specs_history` : All specification files generated
+- `README.md` : Setup and usage instructions
+- `CLAUDE.md` : Instructions for using Claude Code
+- `constitution.md` : This constitution
 
-[PRINCIPLE__DESCRIPTION]
+### Technology Requirements
+- Python version: 3.13+
+- Task model: Each task must have a unique ID, title, description, and completed status
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### Feature Implementation Requirements
+- Add Task – Add a new todo item
+- Delete Task – Remove tasks by ID
+- Update Task – Modify task details
+- View Task List – List all tasks with status indicators
+- Mark as Complete – Toggle task completion status
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Code Architecture
+- CLI interactions should be in `main.py` only
+- All logic must be encapsulated in classes (Task, TodoManager)
+- Each feature must have a corresponding spec file in `/specs_history`
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Constraints
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Code Generation
+- You cannot write code manually; all code must be generated/refined using Claude Code from specs
+- Each spec must define inputs, outputs, expected behavior, edge cases, and dependencies
+- Features must be independently testable via CLI
+
+### Code Quality
+- Code must follow clean code principles (naming conventions, modularity, readability)
+- All implementations must be traceable to specifications
+
+## Success Criteria
+
+### Functional Requirements
+- All five basic features are fully functional in CLI
+- Specs are complete and stored in `/specs_history`
+- Generated code matches the specs without manual intervention
+
+### Documentation Requirements
+- README.md and CLAUDE.md provide clear setup and usage instructions
+- Application demonstrates adding, viewing, updating, deleting, and marking tasks as complete
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution serves as the governing document for all development activities in the Todo app project. All code generation, feature implementation, and architectural decisions must align with these principles. Amendments to this constitution require explicit approval and documentation of the changes and their impact on existing specifications and implementations.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.1.0 | **Ratified**: 2025-12-29 | **Last Amended**: 2025-12-29
